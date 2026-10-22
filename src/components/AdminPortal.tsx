@@ -101,9 +101,9 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({ currentView, onBusMapU
   const [newTripBay, setNewTripBay] = useState('Bay 1 — Main Gate');
 
   // Load all admin data
-  const loadAll = async () => {
+  const loadAll = async (silent = false) => {
     try {
-      setIsLoading(true);
+      if (!silent) setIsLoading(true);
       const [tripsRes, demoRes, emailsRes, settingsRes, busMapRes] = await Promise.all([
         api.getTrips(),
         api.getDemoUsers(),
@@ -122,7 +122,7 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({ currentView, onBusMapU
         const availRes = await api.getDriverAvailability();
         setDriverAvailability(availRes.drivers);
       } catch (e) {
-        console.error('Failed to load driver availability:', e);
+        if (!silent) console.error('Failed to load driver availability:', e);
       }
 
       if (busMapRes && busMapRes.bus_map) {
@@ -146,29 +146,68 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({ currentView, onBusMapU
       setBuses(uniqueBuses);
       setRoutes(uniqueRoutes);
 
-      if (uniqueBuses.length > 0) setNewTripBusId(uniqueBuses[0].id);
-      if (uniqueRoutes.length > 0) setNewTripRouteId(uniqueRoutes[0].id);
+      if (uniqueBuses.length > 0 && !newTripBusId) setNewTripBusId(uniqueBuses[0].id);
+      if (uniqueRoutes.length > 0 && !newTripRouteId) setNewTripRouteId(uniqueRoutes[0].id);
       const drivers = demoRes.users.filter(u => u.role === 'driver');
       setAllDrivers(drivers);
 
       // Pick the first available driver not yet assigned today
       const assignedTodayIds = tripsRes.trips.map(t => t.assigned_driver_id);
       const freeDriver = drivers.find(d => !assignedTodayIds.includes(d.id));
-      if (freeDriver) {
+      if (freeDriver && !newTripDriverId) {
         setNewTripDriverId(freeDriver.id);
-      } else if (drivers.length > 0) {
+      } else if (drivers.length > 0 && !newTripDriverId) {
         setNewTripDriverId(drivers[0].id);
       }
     } catch (err) {
-      console.error('Failed to load admin data:', err);
+      if (!silent) console.error('Failed to load admin data:', err);
     } finally {
-      setIsLoading(false);
+      if (!silent) setIsLoading(false);
     }
   };
 
   useEffect(() => {
-    loadAll();
+    loadAll(false);
+    // Real-time live polling every 3.5s so admin sees live seat bookings and driver updates
+    const pollInterval = setInterval(() => {
+      loadAll(true);
+    }, 3500);
+
+    return () => clearInterval(pollInterval);
   }, []);
+
+  const handleOpenAllBuses = async () => {
+    try {
+      const res = await api.openAllTrips();
+      setFeedback({ type: 'success', text: res.message });
+      await loadAll(true);
+    } catch (err: any) {
+      setFeedback({ type: 'error', text: err.message || 'Failed to open all bus bookings' });
+    }
+  };
+
+  const handleCloseAllBuses = async () => {
+    try {
+      const res = await api.closeAllTrips();
+      setFeedback({ type: 'success', text: res.message });
+      await loadAll(true);
+    } catch (err: any) {
+      setFeedback({ type: 'error', text: err.message || 'Failed to close all bus bookings' });
+    }
+  };
+
+  const handleClearAllBookings = async () => {
+    if (!window.confirm('Are you sure you want to remove all previous bookings? All bus seats will immediately become available for students.')) {
+      return;
+    }
+    try {
+      const res = await api.clearAllBookings();
+      setFeedback({ type: 'success', text: res.message });
+      await loadAll(true);
+    } catch (err: any) {
+      setFeedback({ type: 'error', text: err.message || 'Failed to clear previous bookings' });
+    }
+  };
 
   useEffect(() => {
     if (currentView === 'admin-bus-map') {
@@ -824,18 +863,53 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({ currentView, onBusMapU
 
           {/* Trips Table with Expandable Booked & Boarded Row */}
           <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs overflow-x-auto">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-5 pb-4 border-b border-slate-100">
               <div>
-                <h3 className="text-sm font-bold text-slate-900">
-                  All Scheduled Trips & Boarding Progress
-                </h3>
-                <p className="text-xs text-slate-500">
-                  Click any bus row to inspect booked seats and boarded passengers in real time.
+                <div className="flex items-center gap-2">
+                  <h3 className="text-sm font-bold text-slate-900">
+                    All Scheduled Trips & Live Booking Controls
+                  </h3>
+                  <span className="text-xs text-blue-700 bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-full font-mono font-medium">
+                    {trips.length} Campus Buses Scheduled Today
+                  </span>
+                </div>
+                <p className="text-xs text-slate-500 mt-0.5">
+                  Click any bus row to inspect passenger manifests in real time. Toggling Open/Close immediately updates all students and drivers.
                 </p>
               </div>
-              <span className="text-xs text-slate-500 bg-slate-100 px-2.5 py-1 rounded-full font-mono font-medium">
-                {trips.length} Active Trips Today
-              </span>
+
+              {/* Bulk Controls */}
+              <div className="flex flex-wrap items-center gap-2">
+                <button
+                  type="button"
+                  onClick={handleOpenAllBuses}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 rounded-xl transition-colors cursor-pointer shadow-2xs"
+                  title="Open all campus bus booking windows for students"
+                >
+                  <Unlock className="w-3.5 h-3.5 text-emerald-600" />
+                  <span>Open All Buses for Booking</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={handleCloseAllBuses}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-rose-800 bg-rose-50 hover:bg-rose-100 border border-rose-300 rounded-xl transition-colors cursor-pointer shadow-2xs"
+                  title="Close all campus bus booking windows"
+                >
+                  <Lock className="w-3.5 h-3.5 text-rose-600" />
+                  <span>Close All Buses</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={handleClearAllBookings}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded-xl transition-colors cursor-pointer shadow-2xs"
+                  title="Clear all previous student bookings and make all seats available"
+                >
+                  <RotateCcw className="w-3.5 h-3.5 text-slate-500" />
+                  <span>Clear Previous Bookings</span>
+                </button>
+              </div>
             </div>
 
             <table className="w-full text-left text-xs">

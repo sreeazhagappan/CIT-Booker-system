@@ -828,7 +828,7 @@ function getInitialSeed(): DatabaseSchema {
     }
   ];
 
-  // Scheduled Trips for Today
+  // Scheduled Trips for Today — All 16 CIT campus buses open for booking
   const trips: Trip[] = [
     {
       id: 'trip_bus_1',
@@ -845,9 +845,9 @@ function getInitialSeed(): DatabaseSchema {
       notes: 'Batch 1 (03:30 PM) campus return departure passing Wimco Nagar Metro & Royapuram to Ennore.'
     },
     {
-      id: 'trip_bus_53',
-      bus_id: 'bus_53',
-      route_id: 'route_53',
+      id: 'trip_bus_2',
+      bus_id: 'bus_2',
+      route_id: 'route_2',
       assigned_driver_id: 'usr_driver_2',
       travel_date: todayStr,
       departure_time: '04:30 PM',
@@ -855,13 +855,13 @@ function getInitialSeed(): DatabaseSchema {
       booking_window_opens_at: oneHourAgo,
       booking_window_closes_at: threeHoursFromNow,
       status: 'OPEN',
-      parking_bay: 'Bay 4 — ECR Bay',
-      notes: 'Batch 2 (04:30 PM) campus return departure via Kottivakkam and Neelankarai to Thiruvanmiyur.'
+      parking_bay: 'Bay 2 — Main Terminus',
+      notes: 'Batch 2 (04:30 PM) campus return departure to Tiruvottiyur via Tollgate.'
     },
     {
-      id: 'trip_bus_68',
-      bus_id: 'bus_68',
-      route_id: 'route_68',
+      id: 'trip_bus_3',
+      bus_id: 'bus_3',
+      route_id: 'route_3',
       assigned_driver_id: 'usr_driver_3',
       travel_date: todayStr,
       departure_time: '03:30 PM',
@@ -869,13 +869,13 @@ function getInitialSeed(): DatabaseSchema {
       booking_window_opens_at: oneHourAgo,
       booking_window_closes_at: threeHoursFromNow,
       status: 'OPEN',
-      parking_bay: 'Bay 5 — Velachery Bay',
-      notes: 'Batch 1 (03:30 PM) campus return departure via Checkpost and Phoenix Mall to Velachery.'
+      parking_bay: 'Bay 3 — North Bay',
+      notes: 'Batch 1 (03:30 PM) campus return departure to Tondiarpet & Mint Clock Tower.'
     },
     {
-      id: 'trip_bus_74',
-      bus_id: 'bus_74',
-      route_id: 'route_74',
+      id: 'trip_bus_4',
+      bus_id: 'bus_4',
+      route_id: 'route_4',
       assigned_driver_id: 'usr_driver_4',
       travel_date: todayStr,
       departure_time: '04:30 PM',
@@ -883,13 +883,13 @@ function getInitialSeed(): DatabaseSchema {
       booking_window_opens_at: oneHourAgo,
       booking_window_closes_at: threeHoursFromNow,
       status: 'OPEN',
-      parking_bay: 'Bay 6 — Adyar Bay',
-      notes: 'Batch 2 (04:30 PM) campus return departure via IIT Madras gate and Madhya Kailash to Adyar.'
+      parking_bay: 'Bay 4 — Terminal Bay',
+      notes: 'Batch 2 (04:30 PM) campus return departure via Madhavaram to Manali.'
     },
     {
-      id: 'trip_bus_86',
-      bus_id: 'bus_86',
-      route_id: 'route_86',
+      id: 'trip_bus_5',
+      bus_id: 'bus_5',
+      route_id: 'route_5',
       assigned_driver_id: 'usr_driver_5',
       travel_date: todayStr,
       departure_time: '03:30 PM',
@@ -897,27 +897,27 @@ function getInitialSeed(): DatabaseSchema {
       booking_window_opens_at: oneHourAgo,
       booking_window_closes_at: threeHoursFromNow,
       status: 'OPEN',
-      parking_bay: 'Bay 8 — Porur Bay',
-      notes: 'Batch 1 (03:30 PM) campus return departure via Madhananthapuram to Porur junction.'
+      parking_bay: 'Bay 5 — Central Ground',
+      notes: 'Batch 1 (03:30 PM) campus return departure to KKD Nagar & Otteri.'
     },
     {
-      id: 'trip_bus_110',
-      bus_id: 'bus_110',
-      route_id: 'route_110',
+      id: 'trip_bus_14',
+      bus_id: 'bus_14',
+      route_id: 'route_14',
       assigned_driver_id: 'usr_driver_6',
       travel_date: todayStr,
       departure_time: '04:30 PM',
       departure_time_iso: new Date(now.getTime() + 120 * 60 * 1000).toISOString(),
       booking_window_opens_at: oneHourAgo,
       booking_window_closes_at: threeHoursFromNow,
-      status: 'FULL',
-      parking_bay: 'Bay 9 — Kundrathur Local',
-      notes: 'Batch 2 (04:30 PM) transit bus for Kundrathur and local routes. All 24 seats reserved.'
+      status: 'OPEN',
+      parking_bay: 'Bay 6 — Anna Nagar Bay',
+      notes: 'Batch 2 (04:30 PM) campus return departure via Villivakkam to Anna Nagar Roundtana.'
     },
     {
-      id: 'trip_bus_101',
-      bus_id: 'bus_101',
-      route_id: 'route_101',
+      id: 'trip_bus_18',
+      bus_id: 'bus_18',
+      route_id: 'route_18',
       assigned_driver_id: 'usr_driver_7',
       travel_date: todayStr,
       departure_time: '03:30 PM',
@@ -925,181 +925,143 @@ function getInitialSeed(): DatabaseSchema {
       booking_window_opens_at: oneHourAgo,
       booking_window_closes_at: threeHoursFromNow,
       status: 'OPEN',
-      parking_bay: 'Bay 2 — South Bay',
-      notes: 'Batch 1 (03:30 PM) campus return departure to Chromepet / Pallavaram.'
+      parking_bay: 'Bay 7 — West Bay',
+      notes: 'Batch 1 (03:30 PM) campus return departure to Tirumangalam EB & Anna Nagar West.'
     },
-    // Past completed trips for boarding history
     {
-      id: 'trip_bus_past_yesterday',
+      id: 'trip_bus_53',
       bus_id: 'bus_53',
       route_id: 'route_53',
       assigned_driver_id: 'usr_driver_8',
-      travel_date: new Date(now.getTime() - 24 * 3600 * 1000).toISOString().split('T')[0],
+      travel_date: todayStr,
       departure_time: '04:30 PM',
-      departure_time_iso: new Date(now.getTime() - 22 * 3600 * 1000).toISOString(),
-      booking_window_opens_at: new Date(now.getTime() - 28 * 3600 * 1000).toISOString(),
-      booking_window_closes_at: new Date(now.getTime() - 22 * 3600 * 1000).toISOString(),
-      status: 'COMPLETED',
-      parking_bay: 'Bay 4 — ECR Bay',
-      notes: 'Yesterday evening Batch 2 campus departure completed.'
+      departure_time_iso: new Date(now.getTime() + 120 * 60 * 1000).toISOString(),
+      booking_window_opens_at: oneHourAgo,
+      booking_window_closes_at: threeHoursFromNow,
+      status: 'OPEN',
+      parking_bay: 'Bay 8 — ECR Bay',
+      notes: 'Batch 2 (04:30 PM) campus return departure via Kottivakkam and Neelankarai to Thiruvanmiyur.'
     },
     {
-      id: 'trip_bus_past_2days_ago',
+      id: 'trip_bus_54',
+      bus_id: 'bus_54',
+      route_id: 'route_54',
+      assigned_driver_id: 'usr_driver_9',
+      travel_date: todayStr,
+      departure_time: '03:30 PM',
+      departure_time_iso: new Date(now.getTime() + 60 * 60 * 1000).toISOString(),
+      booking_window_opens_at: oneHourAgo,
+      booking_window_closes_at: threeHoursFromNow,
+      status: 'OPEN',
+      parking_bay: 'Bay 9 — OMR Bay',
+      notes: 'Batch 1 (03:30 PM) campus return departure via Karapakkam and Sholinganallur to OMR.'
+    },
+    {
+      id: 'trip_bus_68',
       bus_id: 'bus_68',
       route_id: 'route_68',
-      assigned_driver_id: 'usr_driver_3',
-      travel_date: new Date(now.getTime() - 48 * 3600 * 1000).toISOString().split('T')[0],
+      assigned_driver_id: 'usr_driver_10',
+      travel_date: todayStr,
+      departure_time: '04:30 PM',
+      departure_time_iso: new Date(now.getTime() + 120 * 60 * 1000).toISOString(),
+      booking_window_opens_at: oneHourAgo,
+      booking_window_closes_at: threeHoursFromNow,
+      status: 'OPEN',
+      parking_bay: 'Bay 10 — Velachery Bay',
+      notes: 'Batch 2 (04:30 PM) campus return departure via Checkpost and Phoenix Mall to Velachery.'
+    },
+    {
+      id: 'trip_bus_74',
+      bus_id: 'bus_74',
+      route_id: 'route_74',
+      assigned_driver_id: 'usr_driver_11',
+      travel_date: todayStr,
       departure_time: '03:30 PM',
-      departure_time_iso: new Date(now.getTime() - 46 * 3600 * 1000).toISOString(),
-      booking_window_opens_at: new Date(now.getTime() - 52 * 3600 * 1000).toISOString(),
-      booking_window_closes_at: new Date(now.getTime() - 46 * 3600 * 1000).toISOString(),
-      status: 'COMPLETED',
-      parking_bay: 'Bay 5 — Velachery Bay',
-      notes: 'Campus return departure completed.'
+      departure_time_iso: new Date(now.getTime() + 60 * 60 * 1000).toISOString(),
+      booking_window_opens_at: oneHourAgo,
+      booking_window_closes_at: threeHoursFromNow,
+      status: 'OPEN',
+      parking_bay: 'Bay 11 — Adyar Bay',
+      notes: 'Batch 1 (03:30 PM) campus return departure via IIT Madras gate and Madhya Kailash to Adyar.'
+    },
+    {
+      id: 'trip_bus_81',
+      bus_id: 'bus_81',
+      route_id: 'route_81',
+      assigned_driver_id: 'usr_driver_12',
+      travel_date: todayStr,
+      departure_time: '04:30 PM',
+      departure_time_iso: new Date(now.getTime() + 120 * 60 * 1000).toISOString(),
+      booking_window_opens_at: oneHourAgo,
+      booking_window_closes_at: threeHoursFromNow,
+      status: 'OPEN',
+      parking_bay: 'Bay 12 — South Gate Bay',
+      notes: 'Batch 2 (04:30 PM) campus return departure to KK Nagar EB & Sivan Park.'
+    },
+    {
+      id: 'trip_bus_86',
+      bus_id: 'bus_86',
+      route_id: 'route_86',
+      assigned_driver_id: 'usr_driver_13',
+      travel_date: todayStr,
+      departure_time: '03:30 PM',
+      departure_time_iso: new Date(now.getTime() + 60 * 60 * 1000).toISOString(),
+      booking_window_opens_at: oneHourAgo,
+      booking_window_closes_at: threeHoursFromNow,
+      status: 'OPEN',
+      parking_bay: 'Bay 13 — Porur Bay',
+      notes: 'Batch 1 (03:30 PM) campus return departure via Madhananthapuram to Porur junction.'
+    },
+    {
+      id: 'trip_bus_96',
+      bus_id: 'bus_96',
+      route_id: 'route_96',
+      assigned_driver_id: 'usr_driver_14',
+      travel_date: todayStr,
+      departure_time: '04:30 PM',
+      departure_time_iso: new Date(now.getTime() + 120 * 60 * 1000).toISOString(),
+      booking_window_opens_at: oneHourAgo,
+      booking_window_closes_at: threeHoursFromNow,
+      status: 'OPEN',
+      parking_bay: 'Bay 14 — GST Corridor Bay',
+      notes: 'Batch 2 (04:30 PM) campus return departure to Tambaram Sanatorium & MEPZ.'
+    },
+    {
+      id: 'trip_bus_101',
+      bus_id: 'bus_101',
+      route_id: 'route_101',
+      assigned_driver_id: 'usr_driver_15',
+      travel_date: todayStr,
+      departure_time: '03:30 PM',
+      departure_time_iso: new Date(now.getTime() + 60 * 60 * 1000).toISOString(),
+      booking_window_opens_at: oneHourAgo,
+      booking_window_closes_at: threeHoursFromNow,
+      status: 'OPEN',
+      parking_bay: 'Bay 15 — Local Bay',
+      notes: 'Batch 1 (03:30 PM) campus return departure to Kundrathur Local stops.'
+    },
+    {
+      id: 'trip_bus_110',
+      bus_id: 'bus_110',
+      route_id: 'route_110',
+      assigned_driver_id: 'usr_driver_16',
+      travel_date: todayStr,
+      departure_time: '04:30 PM',
+      departure_time_iso: new Date(now.getTime() + 120 * 60 * 1000).toISOString(),
+      booking_window_opens_at: oneHourAgo,
+      booking_window_closes_at: threeHoursFromNow,
+      status: 'OPEN',
+      parking_bay: 'Bay 16 — Feeder Bay',
+      notes: 'Batch 2 (04:30 PM) transit bus for Kundrathur 4 Road & Feeder stops.'
     }
   ];
 
-  // Seed sample bookings:
-  // Aarav has Seat 2B on Bus 1 (trip_bus_1) (NOT BOARDED) -> ready for scanning test!
-  const bookings: Booking[] = [
-    {
-      id: 'bk_sample_1',
-      booking_reference: 'CIT-BK-84920',
-      student_id: 'usr_student_1',
-      trip_id: 'trip_bus_1',
-      seat_id: '2B',
-      booking_status: 'CONFIRMED',
-      boarding_status: 'NOT BOARDED',
-      created_at: new Date(now.getTime() - 30 * 60 * 1000).toISOString(),
-      cancelled_at: null
-    },
-    {
-      id: 'bk_sample_2',
-      booking_reference: 'CIT-BK-11029',
-      student_id: 'usr_student_2',
-      trip_id: 'trip_bus_1',
-      seat_id: '3A',
-      booking_status: 'CONFIRMED',
-      boarding_status: 'BOARDED',
-      created_at: new Date(now.getTime() - 40 * 60 * 1000).toISOString(),
-      cancelled_at: null
-    },
-    // Past completed & boarded bookings for student console history
-    {
-      id: 'bk_sample_past_aarav_1',
-      booking_reference: 'CIT-BK-73194',
-      student_id: 'usr_student_1',
-      trip_id: 'trip_bus_past_yesterday',
-      seat_id: '4A',
-      booking_status: 'CONFIRMED',
-      boarding_status: 'BOARDED',
-      created_at: new Date(now.getTime() - 26 * 3600 * 1000).toISOString(),
-      cancelled_at: null
-    },
-    {
-      id: 'bk_sample_past_aarav_2',
-      booking_reference: 'CIT-BK-62815',
-      student_id: 'usr_student_1',
-      trip_id: 'trip_bus_past_2days_ago',
-      seat_id: '2D',
-      booking_status: 'CONFIRMED',
-      boarding_status: 'BOARDED',
-      created_at: new Date(now.getTime() - 50 * 3600 * 1000).toISOString(),
-      cancelled_at: null
-    },
-    {
-      id: 'bk_sample_past_ananya_1',
-      booking_reference: 'CIT-BK-51902',
-      student_id: 'usr_student_2',
-      trip_id: 'trip_bus_past_yesterday',
-      seat_id: '3B',
-      booking_status: 'CONFIRMED',
-      boarding_status: 'BOARDED',
-      created_at: new Date(now.getTime() - 25 * 3600 * 1000).toISOString(),
-      cancelled_at: null
-    }
-  ];
+  // All previous bookings cleared — fresh slate so all buses and seats are available for booking!
+  const bookings: Booking[] = [];
 
-  // Pre-seed full bookings for trip_bus_110 (24 seats)
-  const fullSeats = ['1A','1B','1C','1D','2A','2B','2C','2D','3A','3B','3C','3D','4A','4B','4C','4D','5A','5B','5C','5D','6A','6B','6C','6D'];
-  fullSeats.forEach((seat, idx) => {
-    bookings.push({
-      id: `bk_full_${idx + 1}`,
-      booking_reference: `CIT-BK-99${100 + idx}`,
-      student_id: idx % 2 === 0 ? 'usr_student_1' : 'usr_student_2',
-      trip_id: 'trip_bus_110',
-      seat_id: seat,
-      booking_status: 'CONFIRMED',
-      boarding_status: 'NOT BOARDED',
-      created_at: new Date(now.getTime() - 50 * 60 * 1000).toISOString(),
-      cancelled_at: null
-    });
-  });
-
-  // Seed boarding events (Live today and past history)
-  const boarding_events: BoardingEvent[] = [
-    {
-      id: 'bde_1',
-      booking_id: 'bk_sample_2',
-      student_id: 'usr_student_2',
-      trip_id: 'trip_bus_1',
-      scanned_by_driver_id: 'usr_driver_1',
-      boarded_at: new Date(now.getTime() - 15 * 60 * 1000).toISOString(),
-      method: 'QR'
-    },
-    {
-      id: 'bde_past_aarav_1',
-      booking_id: 'bk_sample_past_aarav_1',
-      student_id: 'usr_student_1',
-      trip_id: 'trip_bus_past_yesterday',
-      scanned_by_driver_id: 'usr_driver_8',
-      boarded_at: new Date(now.getTime() - 22 * 3600 * 1000 + 12 * 60 * 1000).toISOString(),
-      method: 'QR'
-    },
-    {
-      id: 'bde_past_aarav_2',
-      booking_id: 'bk_sample_past_aarav_2',
-      student_id: 'usr_student_1',
-      trip_id: 'trip_bus_past_2days_ago',
-      scanned_by_driver_id: 'usr_driver_3',
-      boarded_at: new Date(now.getTime() - 46 * 3600 * 1000 + 10 * 60 * 1000).toISOString(),
-      method: 'QR'
-    },
-    {
-      id: 'bde_past_ananya_1',
-      booking_id: 'bk_sample_past_ananya_1',
-      student_id: 'usr_student_2',
-      trip_id: 'trip_bus_past_yesterday',
-      scanned_by_driver_id: 'usr_driver_8',
-      boarded_at: new Date(now.getTime() - 22 * 3600 * 1000 + 14 * 60 * 1000).toISOString(),
-      method: 'QR'
-    }
-  ];
-
-  const email_logs: EmailLog[] = [
-    {
-      id: 'eml_1',
-      booking_id: 'bk_sample_1',
-      recipient_email: 'aarav.sharma@citchennai.net',
-      recipient_name: 'Aarav Sharma',
-      subject: 'CIT Booker — Your Bus Booking Is Confirmed [CIT-BK-84920]',
-      body_preview: 'Dear Aarav Sharma, your seat 2B on Bus 1 (Route 1: Ennore) departing at 05:20 AM is confirmed for ₹0. Present your personal QR pass when boarding at your designated stop.',
-      status: 'SENT',
-      sent_at: new Date(now.getTime() - 30 * 60 * 1000).toISOString(),
-      error_message: null
-    },
-    {
-      id: 'eml_2',
-      booking_id: 'bk_sample_2',
-      recipient_email: 'ananya.rao@citchennai.net',
-      recipient_name: 'Ananya Rao',
-      subject: 'CIT Booker — Your Bus Booking Is Confirmed [CIT-BK-11029]',
-      body_preview: 'Dear Ananya Rao, your seat 3A on Bus 1 (Route 1: Ennore) departing at 05:20 AM is confirmed for ₹0. Present your personal QR pass when boarding.',
-      status: 'SENT',
-      sent_at: new Date(now.getTime() - 40 * 60 * 1000).toISOString(),
-      error_message: null
-    }
-  ];
+  // Fresh boarding and communication logs
+  const boarding_events: BoardingEvent[] = [];
+  const email_logs: EmailLog[] = [];
 
   const settings: SystemSettings = {
     restrict_email_domain: false, // Flexible demo mode

@@ -20,6 +20,22 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSelectRole }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successNotice, setSuccessNotice] = useState<string | null>(null);
 
+  const handleDirectAccess = async () => {
+    setIsSubmitting(true);
+    setError(null);
+    try {
+      await directAccessStudent();
+      setActiveModal(null);
+    } catch (err: any) {
+      console.error('Direct access failed:', err);
+      setError(err?.message || 'Unable to direct access student account. Please sign in or register.');
+      setActiveModal('student-auth');
+      setAuthMode('login');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const handleStudentSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
@@ -89,6 +105,22 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSelectRole }) => {
           </p>
         </div>
 
+        {/* Error notification banner if any */}
+        {error && !activeModal && (
+          <div className="max-w-3xl mx-auto mb-6 p-4 rounded-xl bg-red-50 border border-red-200 text-sm text-red-700 flex items-center justify-between shadow-xs">
+            <div className="flex items-center gap-2">
+              <span className="font-semibold">Notice:</span>
+              <span>{error}</span>
+            </div>
+            <button 
+              onClick={() => setError(null)}
+              className="text-red-500 hover:text-red-700 font-bold px-2 py-0.5 rounded"
+            >
+              ✕
+            </button>
+          </div>
+        )}
+
         {/* Direct Access Banner for Registered Students */}
         {savedStudent && (
           <div className="max-w-3xl mx-auto mb-8 bg-linear-to-r from-blue-50 to-indigo-50 border-2 border-blue-200 rounded-2xl p-5 shadow-sm">
@@ -115,14 +147,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSelectRole }) => {
 
               <div className="flex items-center gap-2">
                 <button
-                  onClick={async () => {
-                    setIsSubmitting(true);
-                    try {
-                      await directAccessStudent();
-                    } finally {
-                      setIsSubmitting(false);
-                    }
-                  }}
+                  onClick={handleDirectAccess}
                   disabled={isSubmitting}
                   className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-semibold transition-colors shadow-xs flex items-center gap-2 whitespace-nowrap cursor-pointer"
                 >
@@ -172,14 +197,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSelectRole }) => {
             {savedStudent ? (
               <div className="space-y-2">
                 <button
-                  onClick={async () => {
-                    setIsSubmitting(true);
-                    try {
-                      await directAccessStudent();
-                    } finally {
-                      setIsSubmitting(false);
-                    }
-                  }}
+                  onClick={handleDirectAccess}
                   disabled={isSubmitting}
                   className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm transition-colors shadow-xs"
                 >
@@ -325,19 +343,11 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSelectRole }) => {
                 </p>
                 <button
                   type="button"
-                  onClick={async () => {
-                    setIsSubmitting(true);
-                    try {
-                      await directAccessStudent();
-                      setActiveModal(null);
-                    } finally {
-                      setIsSubmitting(false);
-                    }
-                  }}
+                  onClick={handleDirectAccess}
                   disabled={isSubmitting}
                   className="w-full py-2 px-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
                 >
-                  <span>Direct Access to {savedStudent.name.split(' ')[0]}'s Account</span>
+                  <span>{isSubmitting ? 'Accessing...' : `Direct Access to ${savedStudent.name.split(' ')[0]}'s Account`}</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>

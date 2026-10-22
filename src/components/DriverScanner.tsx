@@ -171,20 +171,20 @@ export const DriverScanner: React.FC<DriverScannerProps> = ({ onOpenBusMap }) =>
   };
 
   // Load trips assigned to this driver
-  const loadDriverTrips = async () => {
+  const loadDriverTrips = async (silent = false) => {
     try {
-      setIsLoading(true);
+      if (!silent) setIsLoading(true);
       const data = await api.getTrips({
         driver_id: user?.role === 'driver' ? user.id : undefined
       });
       setAssignedTrips(data.trips);
-      if (data.trips.length > 0) {
+      if (data.trips.length > 0 && !selectedTripId) {
         setSelectedTripId(data.trips[0].id);
       }
     } catch (err) {
-      console.error('Failed to load trips for driver:', err);
+      if (!silent) console.error('Failed to load trips for driver:', err);
     } finally {
-      setIsLoading(false);
+      if (!silent) setIsLoading(false);
     }
   };
 
@@ -195,13 +195,31 @@ export const DriverScanner: React.FC<DriverScannerProps> = ({ onOpenBusMap }) =>
       const data = await api.getTripManifest(tripId);
       setManifestData(data);
     } catch (err) {
-      console.error('Failed to load manifest:', err);
+      // Ignore background manifest poll errors
     }
   };
 
   useEffect(() => {
-    loadDriverTrips();
-  }, [user]);
+    loadDriverTrips(false);
+    // Real-time live polling for driver every 2.5s: syncs admin booking window toggles and fresh passenger bookings
+    const pollInterval = setInterval(() => {
+      loadDriverTrips(true);
+      if (selectedTripId) {
+        loadManifest(selectedTripId);
+      }
+    }, 2500);
+
+    const onFocus = () => {
+      loadDriverTrips(true);
+      if (selectedTripId) loadManifest(selectedTripId);
+    };
+    window.addEventListener('focus', onFocus);
+
+    return () => {
+      clearInterval(pollInterval);
+      window.removeEventListener('focus', onFocus);
+    };
+  }, [user, selectedTripId]);
 
   useEffect(() => {
     if (selectedTripId) {

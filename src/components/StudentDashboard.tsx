@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Trip, TripStatus, Booking } from '../types/index.ts';
 import { api } from '../services/api.ts';
 import { useAuth } from '../context/AuthContext.tsx';
-import { Bus, Clock, MapPin, Users, Calendar, Filter, ArrowRight, ShieldCheck, AlertCircle, Search } from 'lucide-react';
+import { Bus, Clock, MapPin, Users, Calendar, Filter, ArrowRight, ShieldCheck, AlertCircle, Search, Lock } from 'lucide-react';
 
 interface StudentDashboardProps {
   onSelectTrip: (tripId: string) => void;
@@ -25,9 +25,9 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
   const [selectedDate, setSelectedDate] = useState<string>(new Date().toISOString().split('T')[0]);
   const [recentPreviousBooking, setRecentPreviousBooking] = useState<Booking | null>(null);
 
-  const loadTrips = async () => {
+  const loadTrips = async (silent = false) => {
     try {
-      setIsLoading(true);
+      if (!silent) setIsLoading(true);
       const [tripsData, myBookingsData] = await Promise.all([
         api.getTrips({
           date: selectedDate,
@@ -43,14 +43,25 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
       ) || (myBookingsData.bookings.length > 0 ? myBookingsData.bookings[0] : null);
       setRecentPreviousBooking(previous || null);
     } catch (err) {
-      console.error('Failed to load trips:', err);
+      if (!silent) console.error('Failed to load trips:', err);
     } finally {
-      setIsLoading(false);
+      if (!silent) setIsLoading(false);
     }
   };
 
   useEffect(() => {
-    loadTrips();
+    loadTrips(false);
+    // Real-time background sync: poll every 2.5 seconds so admin status changes (OPEN / CLOSED) reflect immediately
+    const pollInterval = setInterval(() => {
+      loadTrips(true);
+    }, 2500);
+
+    const onFocus = () => loadTrips(true);
+    window.addEventListener('focus', onFocus);
+    return () => {
+      clearInterval(pollInterval);
+      window.removeEventListener('focus', onFocus);
+    };
   }, [statusFilter, selectedDate]);
 
   const getStatusBadge = (status: TripStatus) => {
@@ -58,7 +69,7 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
       case 'OPEN':
         return (
           <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
             OPEN FOR BOOKING
           </span>
         );
@@ -77,7 +88,8 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
         );
       case 'CLOSED':
         return (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200">
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-semibold bg-rose-50 text-rose-700 border border-rose-200">
+            <Lock className="w-3 h-3 text-rose-600" />
             BOOKING CLOSED
           </span>
         );
@@ -351,10 +363,18 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
                   </div>
 
                   {/* Parking bay info */}
-                  <div className="text-[11px] text-slate-500 mb-4 flex items-center justify-between">
+                  <div className="text-[11px] text-slate-500 mb-3 flex items-center justify-between">
                     <span>CIT Campus Terminal:</span>
                     <span className="font-medium text-slate-700">{trip.parking_bay}</span>
                   </div>
+
+                  {/* Notice if booking is closed by administrator */}
+                  {trip.status === 'CLOSED' && (
+                    <div className="mb-3 p-2.5 rounded-xl bg-rose-50 border border-rose-200 text-[11px] text-rose-800 flex items-center gap-2">
+                      <Lock className="w-3.5 h-3.5 text-rose-600 shrink-0" />
+                      <span>Bookings closed by Transport Admin. Schedule and stops are visible.</span>
+                    </div>
+                  )}
                 </div>
 
                 {/* Action button */}
@@ -364,19 +384,20 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
                   className={`w-full py-2.5 px-4 rounded-xl font-semibold text-xs flex items-center justify-center gap-2 transition-all shadow-xs ${
                     isOpen
                       ? 'bg-blue-600 hover:bg-blue-700 text-white cursor-pointer'
-                      : 'bg-slate-100 text-slate-400 border border-slate-200 cursor-not-allowed'
+                      : 'bg-slate-100 text-slate-500 border border-slate-200 cursor-not-allowed'
                   }`}
                 >
+                  {!isOpen && <Lock className="w-3.5 h-3.5 text-slate-400" />}
                   <span>
                     {isOpen
                       ? 'Select Seat & Book (₹0)'
+                      : trip.status === 'CLOSED'
+                      ? 'Booking Closed by Administrator'
                       : trip.status === 'NOT YET OPEN'
                       ? 'Booking Opens Soon'
                       : trip.status === 'FULL'
                       ? 'Bus Is Full'
-                      : trip.status === 'DEPARTED'
-                      ? 'Bus Departed'
-                      : 'Booking Closed'}
+                      : 'Bus Departed'}
                   </span>
                   {isOpen && <ArrowRight className="w-3.5 h-3.5" />}
                 </button>

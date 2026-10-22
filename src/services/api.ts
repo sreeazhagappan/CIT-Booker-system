@@ -268,6 +268,36 @@ class ApiService {
     return res.json();
   }
 
+  async openAllTrips(): Promise<{ success: boolean; count: number; message: string }> {
+    const res = await fetch(`${API_BASE}/admin/trips/open-all`, {
+      method: 'POST',
+      headers: this.getHeaders()
+    });
+    const json = await res.json();
+    if (!res.ok) throw new Error(json.error || 'Failed to open all bus bookings');
+    return json;
+  }
+
+  async closeAllTrips(): Promise<{ success: boolean; count: number; message: string }> {
+    const res = await fetch(`${API_BASE}/admin/trips/close-all`, {
+      method: 'POST',
+      headers: this.getHeaders()
+    });
+    const json = await res.json();
+    if (!res.ok) throw new Error(json.error || 'Failed to close all bus bookings');
+    return json;
+  }
+
+  async clearAllBookings(): Promise<{ success: boolean; message: string }> {
+    const res = await fetch(`${API_BASE}/admin/bookings/clear-all`, {
+      method: 'POST',
+      headers: this.getHeaders()
+    });
+    const json = await res.json();
+    if (!res.ok) throw new Error(json.error || 'Failed to clear previous bookings');
+    return json;
+  }
+
   // Daily Bus Identification Map
   async getBusMap(): Promise<{ bus_map: BusIdentificationMap }> {
     const res = await fetch(`${API_BASE}/bus-map`);

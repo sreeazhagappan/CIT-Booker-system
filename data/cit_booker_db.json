@@ -7,7 +7,7 @@
       "role": "admin",
       "is_verified": true,
       "phone": "+91 94440 12001",
-      "created_at": "2026-09-19T07:20:41.782Z"
+      "created_at": "2026-09-22T11:44:13.907Z"
     },
     {
       "id": "usr_driver_1",
@@ -16,7 +16,7 @@
       "role": "driver",
       "is_verified": true,
       "phone": "+91 94432 55210",
-      "created_at": "2026-09-29T07:20:41.782Z"
+      "created_at": "2026-10-02T11:44:13.907Z"
     },
     {
       "id": "usr_driver_2",
@@ -25,7 +25,7 @@
       "role": "driver",
       "is_verified": true,
       "phone": "+91 97891 33412",
-      "created_at": "2026-09-29T07:20:41.782Z"
+      "created_at": "2026-10-02T11:44:13.907Z"
     },
     {
       "id": "usr_driver_3",
@@ -34,7 +34,124 @@
       "role": "driver",
       "is_verified": true,
       "phone": "+91 98402 77192",
-      "created_at": "2026-10-04T07:20:41.782Z"
+      "created_at": "2026-10-07T11:44:13.907Z"
+    },
+    {
+      "id": "usr_driver_4",
+      "name": "Murugan S. (Bus 74 Driver)",
+      "email": "driver.murugan@citchennai.net",
+      "role": "driver",
+      "is_verified": true,
+      "phone": "+91 97904 11223",
+      "created_at": "2026-10-04T11:44:13.907Z"
+    },
+    {
+      "id": "usr_driver_5",
+      "name": "Rajendran M. (Bus 86 Driver)",
+      "email": "driver.rajendran@citchennai.net",
+      "role": "driver",
+      "is_verified": true,
+      "phone": "+91 98841 88990",
+      "created_at": "2026-10-08T11:44:13.907Z"
+    },
+    {
+      "id": "usr_driver_6",
+      "name": "Venkatesh T. (Bus 110 Driver)",
+      "email": "driver.venkatesh@citchennai.net",
+      "role": "driver",
+      "is_verified": true,
+      "phone": "+91 94443 66778",
+      "created_at": "2026-10-10T11:44:13.907Z"
+    },
+    {
+      "id": "usr_driver_7",
+      "name": "Saravanan D. (Bus 101 Driver)",
+      "email": "driver.saravanan@citchennai.net",
+      "role": "driver",
+      "is_verified": true,
+      "phone": "+91 98410 33221",
+      "created_at": "2026-10-12T11:44:13.907Z"
+    },
+    {
+      "id": "usr_driver_8",
+      "name": "Natarajan K. (Relief Driver)",
+      "email": "driver.natarajan@citchennai.net",
+      "role": "driver",
+      "is_verified": true,
+      "phone": "+91 97910 55443",
+      "created_at": "2026-10-14T11:44:13.907Z"
+    },
+    {
+      "id": "usr_driver_9",
+      "name": "Anbarasan R. (Reserve Driver)",
+      "email": "driver.anbu@citchennai.net",
+      "role": "driver",
+      "is_verified": true,
+      "phone": "+91 98401 22334",
+      "created_at": "2026-10-15T11:44:13.907Z"
+    },
+    {
+      "id": "usr_driver_10",
+      "name": "Manickam S. (Reserve Driver)",
+      "email": "driver.manickam@citchennai.net",
+      "role": "driver",
+      "is_verified": true,
+      "phone": "+91 98402 33445",
+      "created_at": "2026-10-16T11:44:13.907Z"
+    },
+    {
+      "id": "usr_driver_11",
+      "name": "Karthikeyan P. (Reserve Driver)",
+      "email": "driver.karthik@citchennai.net",
+      "role": "driver",
+      "is_verified": true,
+      "phone": "+91 98403 44556",
+      "created_at": "2026-10-17T11:44:13.907Z"
+    },
+    {
+      "id": "usr_driver_12",
+      "name": "Dhanasekaran V. (Reserve Driver)",
+      "email": "driver.dhana@citchennai.net",
+      "role": "driver",
+      "is_verified": true,
+      "phone": "+91 98404 55667",
+      "created_at": "2026-10-18T11:44:13.907Z"
+    },
+    {
+      "id": "usr_driver_13",
+      "name": "Senthil Kumar M. (Reserve Driver)",
+      "email": "driver.senthil@citchennai.net",
+      "role": "driver",
+      "is_verified": true,
+      "phone": "+91 98405 66778",
+      "created_at": "2026-10-19T11:44:13.907Z"
+    },
+    {
+      "id": "usr_driver_14",
+      "name": "Palanisamy T. (Reserve Driver)",
+      "email": "driver.palani@citchennai.net",
+      "role": "driver",
+      "is_verified": true,
+      "phone": "+91 98406 77889",
+      "created_at": "2026-10-20T11:44:13.907Z"
+    },
+    {
+      "id": "usr_driver_15",
+      "name": "Velmurugan A. (Reserve Driver)",
+      "email": "driver.velu@citchennai.net",
+      "role": "driver",
+      "is_verified": true,
+      "phone": "+91 98407 88990",
+      "created_at": "2026-10-21T11:44:13.907Z"
+    },
+    {
+      "id": "usr_driver_16",
+      "name": "Gunasekaran B. (Reserve Driver)",
+      "email": "driver.guna@citchennai.net",
+      "role": "driver",
+      "is_verified": true,
+      "phone": "+91 98408 99001",
+      "created_at": "2026-10-21T11:44:13.907Z"
     },
     {
       "id": "usr_student_1",
@@ -44,7 +161,7 @@
       "is_verified": true,
       "student_id_number": "22CIT042",
       "phone": "+91 98940 12345",
-      "created_at": "2026-10-09T07:20:41.782Z"
+      "created_at": "2026-10-12T11:44:13.907Z"
     },
     {
       "id": "usr_student_2",
@@ -54,7 +171,7 @@
       "is_verified": true,
       "student_id_number": "23CIT108",
       "phone": "+91 94870 54321",
-      "created_at": "2026-10-14T07:20:41.782Z"
+      "created_at": "2026-10-17T11:44:13.907Z"
     },
     {
       "id": "usr_student_3",
@@ -64,7 +181,7 @@
       "is_verified": false,
       "student_id_number": "24CIT215",
       "phone": "+91 91234 56789",
-      "created_at": "2026-10-19T07:20:41.782Z"
+      "created_at": "2026-10-22T11:44:13.907Z"
     }
   ],
   "student_qr_identities": [
@@ -73,7 +190,7 @@
       "user_id": "usr_student_1",
       "opaque_qr_identifier": "CIT-QR-AARAV2026-X94B",
       "status": "ACTIVE",
-      "created_at": "2026-10-09T07:20:41.782Z",
+      "created_at": "2026-10-12T11:44:13.907Z",
       "revoked_at": null,
       "regenerated_at": null
     },
@@ -82,7 +199,7 @@
       "user_id": "usr_student_2",
       "opaque_qr_identifier": "CIT-QR-ANANYA2026-K73P",
       "status": "ACTIVE",
-      "created_at": "2026-10-14T07:20:41.782Z",
+      "created_at": "2026-10-17T11:44:13.907Z",
       "revoked_at": null,
       "regenerated_at": null
     }
@@ -1080,426 +1197,243 @@
       "bus_id": "bus_1",
       "route_id": "route_1",
       "assigned_driver_id": "usr_driver_1",
-      "travel_date": "2026-10-19",
-      "departure_time": "05:20 AM",
-      "departure_time_iso": "2026-10-19T08:05:41.782Z",
-      "booking_window_opens_at": "2026-10-19T06:20:41.782Z",
-      "booking_window_closes_at": "2026-10-19T09:20:41.782Z",
+      "travel_date": "2026-10-22",
+      "departure_time": "03:30 PM",
+      "departure_time_iso": "2026-10-22T12:44:13.907Z",
+      "booking_window_opens_at": "2026-10-22T10:44:47.617Z",
+      "booking_window_closes_at": "2026-10-22T15:44:47.617Z",
       "status": "OPEN",
-      "parking_bay": "Bay 1 — Ennore Terminal",
-      "notes": "Morning run from Ennore Depot passing Wimco Nagar Metro & Royapuram to CIT Chennai campus."
+      "parking_bay": "Bay 1 — Main Ground",
+      "notes": "Batch 1 (03:30 PM) campus return departure passing Wimco Nagar Metro & Royapuram to Ennore."
+    },
+    {
+      "id": "trip_bus_2",
+      "bus_id": "bus_2",
+      "route_id": "route_2",
+      "assigned_driver_id": "usr_driver_2",
+      "travel_date": "2026-10-22",
+      "departure_time": "04:30 PM",
+      "departure_time_iso": "2026-10-22T13:44:13.907Z",
+      "booking_window_opens_at": "2026-10-22T10:44:13.907Z",
+      "booking_window_closes_at": "2026-10-22T14:44:13.907Z",
+      "status": "OPEN",
+      "parking_bay": "Bay 2 — Main Terminus",
+      "notes": "Batch 2 (04:30 PM) campus return departure to Tiruvottiyur via Tollgate."
+    },
+    {
+      "id": "trip_bus_3",
+      "bus_id": "bus_3",
+      "route_id": "route_3",
+      "assigned_driver_id": "usr_driver_3",
+      "travel_date": "2026-10-22",
+      "departure_time": "03:30 PM",
+      "departure_time_iso": "2026-10-22T12:44:13.907Z",
+      "booking_window_opens_at": "2026-10-22T10:44:13.907Z",
+      "booking_window_closes_at": "2026-10-22T14:44:13.907Z",
+      "status": "OPEN",
+      "parking_bay": "Bay 3 — North Bay",
+      "notes": "Batch 1 (03:30 PM) campus return departure to Tondiarpet & Mint Clock Tower."
+    },
+    {
+      "id": "trip_bus_4",
+      "bus_id": "bus_4",
+      "route_id": "route_4",
+      "assigned_driver_id": "usr_driver_4",
+      "travel_date": "2026-10-22",
+      "departure_time": "04:30 PM",
+      "departure_time_iso": "2026-10-22T13:44:13.907Z",
+      "booking_window_opens_at": "2026-10-22T10:44:13.907Z",
+      "booking_window_closes_at": "2026-10-22T14:44:13.907Z",
+      "status": "OPEN",
+      "parking_bay": "Bay 4 — Terminal Bay",
+      "notes": "Batch 2 (04:30 PM) campus return departure via Madhavaram to Manali."
+    },
+    {
+      "id": "trip_bus_5",
+      "bus_id": "bus_5",
+      "route_id": "route_5",
+      "assigned_driver_id": "usr_driver_5",
+      "travel_date": "2026-10-22",
+      "departure_time": "03:30 PM",
+      "departure_time_iso": "2026-10-22T12:44:13.907Z",
+      "booking_window_opens_at": "2026-10-22T10:44:13.907Z",
+      "booking_window_closes_at": "2026-10-22T14:44:13.907Z",
+      "status": "OPEN",
+      "parking_bay": "Bay 5 — Central Ground",
+      "notes": "Batch 1 (03:30 PM) campus return departure to KKD Nagar & Otteri."
+    },
+    {
+      "id": "trip_bus_14",
+      "bus_id": "bus_14",
+      "route_id": "route_14",
+      "assigned_driver_id": "usr_driver_6",
+      "travel_date": "2026-10-22",
+      "departure_time": "04:30 PM",
+      "departure_time_iso": "2026-10-22T13:44:13.907Z",
+      "booking_window_opens_at": "2026-10-22T10:44:13.907Z",
+      "booking_window_closes_at": "2026-10-22T14:44:13.907Z",
+      "status": "OPEN",
+      "parking_bay": "Bay 6 — Anna Nagar Bay",
+      "notes": "Batch 2 (04:30 PM) campus return departure via Villivakkam to Anna Nagar Roundtana."
+    },
+    {
+      "id": "trip_bus_18",
+      "bus_id": "bus_18",
+      "route_id": "route_18",
+      "assigned_driver_id": "usr_driver_7",
+      "travel_date": "2026-10-22",
+      "departure_time": "03:30 PM",
+      "departure_time_iso": "2026-10-22T12:44:13.907Z",
+      "booking_window_opens_at": "2026-10-22T10:44:13.907Z",
+      "booking_window_closes_at": "2026-10-22T14:44:13.907Z",
+      "status": "OPEN",
+      "parking_bay": "Bay 7 — West Bay",
+      "notes": "Batch 1 (03:30 PM) campus return departure to Tirumangalam EB & Anna Nagar West."
     },
     {
       "id": "trip_bus_53",
       "bus_id": "bus_53",
       "route_id": "route_53",
-      "assigned_driver_id": "usr_driver_2",
-      "travel_date": "2026-10-19",
-      "departure_time": "05:50 AM",
-      "departure_time_iso": "2026-10-19T08:20:41.782Z",
-      "booking_window_opens_at": "2026-10-19T06:20:41.782Z",
-      "booking_window_closes_at": "2026-10-19T09:20:41.782Z",
+      "assigned_driver_id": "usr_driver_8",
+      "travel_date": "2026-10-22",
+      "departure_time": "04:30 PM",
+      "departure_time_iso": "2026-10-22T13:44:13.907Z",
+      "booking_window_opens_at": "2026-10-22T10:44:13.907Z",
+      "booking_window_closes_at": "2026-10-22T14:44:13.907Z",
       "status": "OPEN",
-      "parking_bay": "Bay 4 — ECR Terminal",
-      "notes": "ECR coastal shuttle starting at Thiruvanmiyur Depot via Kottivakkam and Neelankarai to CIT."
+      "parking_bay": "Bay 8 — ECR Bay",
+      "notes": "Batch 2 (04:30 PM) campus return departure via Kottivakkam and Neelankarai to Thiruvanmiyur."
+    },
+    {
+      "id": "trip_bus_54",
+      "bus_id": "bus_54",
+      "route_id": "route_54",
+      "assigned_driver_id": "usr_driver_9",
+      "travel_date": "2026-10-22",
+      "departure_time": "03:30 PM",
+      "departure_time_iso": "2026-10-22T12:44:13.907Z",
+      "booking_window_opens_at": "2026-10-22T10:44:13.907Z",
+      "booking_window_closes_at": "2026-10-22T14:44:13.907Z",
+      "status": "OPEN",
+      "parking_bay": "Bay 9 — OMR Bay",
+      "notes": "Batch 1 (03:30 PM) campus return departure via Karapakkam and Sholinganallur to OMR."
     },
     {
       "id": "trip_bus_68",
       "bus_id": "bus_68",
       "route_id": "route_68",
-      "assigned_driver_id": "usr_driver_3",
-      "travel_date": "2026-10-19",
-      "departure_time": "06:10 AM",
-      "departure_time_iso": "2026-10-19T08:35:41.782Z",
-      "booking_window_opens_at": "2026-10-19T06:20:41.782Z",
-      "booking_window_closes_at": "2026-10-19T09:20:41.782Z",
+      "assigned_driver_id": "usr_driver_10",
+      "travel_date": "2026-10-22",
+      "departure_time": "04:30 PM",
+      "departure_time_iso": "2026-10-22T13:44:13.907Z",
+      "booking_window_opens_at": "2026-10-22T10:44:13.907Z",
+      "booking_window_closes_at": "2026-10-22T14:44:13.907Z",
       "status": "OPEN",
-      "parking_bay": "Bay 5 — Velachery Terminal",
-      "notes": "Velachery feeder via Phoenix Mall and Checkpost directly to CIT Chennai."
+      "parking_bay": "Bay 10 — Velachery Bay",
+      "notes": "Batch 2 (04:30 PM) campus return departure via Checkpost and Phoenix Mall to Velachery."
     },
     {
       "id": "trip_bus_74",
       "bus_id": "bus_74",
       "route_id": "route_74",
-      "assigned_driver_id": "usr_driver_2",
-      "travel_date": "2026-10-19",
-      "departure_time": "06:25 AM",
-      "departure_time_iso": "2026-10-19T08:50:41.782Z",
-      "booking_window_opens_at": "2026-10-19T07:50:41.782Z",
-      "booking_window_closes_at": "2026-10-19T10:20:41.782Z",
-      "status": "NOT YET OPEN",
-      "parking_bay": "Bay 6 — Adyar Terminal",
-      "notes": "Adyar line via Madhya Kailash and IIT Madras gate."
+      "assigned_driver_id": "usr_driver_11",
+      "travel_date": "2026-10-22",
+      "departure_time": "03:30 PM",
+      "departure_time_iso": "2026-10-22T12:44:13.907Z",
+      "booking_window_opens_at": "2026-10-22T10:44:13.907Z",
+      "booking_window_closes_at": "2026-10-22T14:44:13.907Z",
+      "status": "OPEN",
+      "parking_bay": "Bay 11 — Adyar Bay",
+      "notes": "Batch 1 (03:30 PM) campus return departure via IIT Madras gate and Madhya Kailash to Adyar."
+    },
+    {
+      "id": "trip_bus_81",
+      "bus_id": "bus_81",
+      "route_id": "route_81",
+      "assigned_driver_id": "usr_driver_12",
+      "travel_date": "2026-10-22",
+      "departure_time": "04:30 PM",
+      "departure_time_iso": "2026-10-22T13:44:13.907Z",
+      "booking_window_opens_at": "2026-10-22T10:44:13.907Z",
+      "booking_window_closes_at": "2026-10-22T14:44:13.907Z",
+      "status": "OPEN",
+      "parking_bay": "Bay 12 — South Gate Bay",
+      "notes": "Batch 2 (04:30 PM) campus return departure to KK Nagar EB & Sivan Park."
     },
     {
       "id": "trip_bus_86",
       "bus_id": "bus_86",
       "route_id": "route_86",
-      "assigned_driver_id": "usr_driver_1",
-      "travel_date": "2026-10-19",
-      "departure_time": "06:55 AM",
-      "departure_time_iso": "2026-10-19T09:10:41.782Z",
-      "booking_window_opens_at": "2026-10-19T06:20:41.782Z",
-      "booking_window_closes_at": "2026-10-19T09:20:41.782Z",
+      "assigned_driver_id": "usr_driver_13",
+      "travel_date": "2026-10-22",
+      "departure_time": "03:30 PM",
+      "departure_time_iso": "2026-10-22T12:44:13.907Z",
+      "booking_window_opens_at": "2026-10-22T10:44:13.907Z",
+      "booking_window_closes_at": "2026-10-22T14:44:13.907Z",
       "status": "OPEN",
-      "parking_bay": "Bay 8 — Porur Terminal",
-      "notes": "Porur junction line via Madhananthapuram to Kundrathur campus."
+      "parking_bay": "Bay 13 — Porur Bay",
+      "notes": "Batch 1 (03:30 PM) campus return departure via Madhananthapuram to Porur junction."
     },
     {
-      "id": "trip_bus_110",
-      "bus_id": "bus_110",
-      "route_id": "route_110",
-      "assigned_driver_id": "usr_driver_3",
-      "travel_date": "2026-10-19",
-      "departure_time": "07:08 AM",
-      "departure_time_iso": "2026-10-19T09:20:41.782Z",
-      "booking_window_opens_at": "2026-10-19T06:20:41.782Z",
-      "booking_window_closes_at": "2026-10-19T09:20:41.782Z",
-      "status": "FULL",
-      "parking_bay": "Bay 9 — Kundrathur Local",
-      "notes": "All 24 seats reserved for Kundrathur local student transit."
+      "id": "trip_bus_96",
+      "bus_id": "bus_96",
+      "route_id": "route_96",
+      "assigned_driver_id": "usr_driver_14",
+      "travel_date": "2026-10-22",
+      "departure_time": "04:30 PM",
+      "departure_time_iso": "2026-10-22T13:44:13.907Z",
+      "booking_window_opens_at": "2026-10-22T10:44:13.907Z",
+      "booking_window_closes_at": "2026-10-22T14:44:13.907Z",
+      "status": "OPEN",
+      "parking_bay": "Bay 14 — GST Corridor Bay",
+      "notes": "Batch 2 (04:30 PM) campus return departure to Tambaram Sanatorium & MEPZ."
     },
     {
       "id": "trip_bus_101",
       "bus_id": "bus_101",
       "route_id": "route_101",
-      "assigned_driver_id": "usr_driver_1",
-      "travel_date": "2026-10-19",
-      "departure_time": "07:16 AM",
-      "departure_time_iso": "2026-10-19T05:50:41.782Z",
-      "booking_window_opens_at": "2026-10-19T03:20:41.782Z",
-      "booking_window_closes_at": "2026-10-19T03:20:41.782Z",
-      "status": "DEPARTED",
-      "parking_bay": "Bay 2",
-      "notes": "Completed early morning run."
+      "assigned_driver_id": "usr_driver_15",
+      "travel_date": "2026-10-22",
+      "departure_time": "03:30 PM",
+      "departure_time_iso": "2026-10-22T12:44:13.907Z",
+      "booking_window_opens_at": "2026-10-22T10:44:13.907Z",
+      "booking_window_closes_at": "2026-10-22T14:44:13.907Z",
+      "status": "OPEN",
+      "parking_bay": "Bay 15 — Local Bay",
+      "notes": "Batch 1 (03:30 PM) campus return departure to Kundrathur Local stops."
+    },
+    {
+      "id": "trip_bus_110",
+      "bus_id": "bus_110",
+      "route_id": "route_110",
+      "assigned_driver_id": "usr_driver_16",
+      "travel_date": "2026-10-22",
+      "departure_time": "04:30 PM",
+      "departure_time_iso": "2026-10-22T13:44:13.907Z",
+      "booking_window_opens_at": "2026-10-22T10:44:13.907Z",
+      "booking_window_closes_at": "2026-10-22T14:44:13.907Z",
+      "status": "OPEN",
+      "parking_bay": "Bay 16 — Feeder Bay",
+      "notes": "Batch 2 (04:30 PM) transit bus for Kundrathur 4 Road & Feeder stops."
     }
   ],
-  "bookings": [
-    {
-      "id": "bk_sample_1",
-      "booking_reference": "CIT-BK-84920",
-      "student_id": "usr_student_1",
-      "trip_id": "trip_bus_1",
-      "seat_id": "2B",
-      "booking_status": "CONFIRMED",
-      "boarding_status": "NOT BOARDED",
-      "created_at": "2026-10-19T06:50:41.782Z",
-      "cancelled_at": null
-    },
-    {
-      "id": "bk_sample_2",
-      "booking_reference": "CIT-BK-11029",
-      "student_id": "usr_student_2",
-      "trip_id": "trip_bus_1",
-      "seat_id": "3A",
-      "booking_status": "CONFIRMED",
-      "boarding_status": "BOARDED",
-      "created_at": "2026-10-19T06:40:41.782Z",
-      "cancelled_at": null
-    },
-    {
-      "id": "bk_full_1",
-      "booking_reference": "CIT-BK-99100",
-      "student_id": "usr_student_1",
-      "trip_id": "trip_bus_110",
-      "seat_id": "1A",
-      "booking_status": "CONFIRMED",
-      "boarding_status": "NOT BOARDED",
-      "created_at": "2026-10-19T06:30:41.782Z",
-      "cancelled_at": null
-    },
-    {
-      "id": "bk_full_2",
-      "booking_reference": "CIT-BK-99101",
-      "student_id": "usr_student_2",
-      "trip_id": "trip_bus_110",
-      "seat_id": "1B",
-      "booking_status": "CONFIRMED",
-      "boarding_status": "NOT BOARDED",
-      "created_at": "2026-10-19T06:30:41.782Z",
-      "cancelled_at": null
-    },
-    {
-      "id": "bk_full_3",
-      "booking_reference": "CIT-BK-99102",
-      "student_id": "usr_student_1",
-      "trip_id": "trip_bus_110",
-      "seat_id": "1C",
-      "booking_status": "CONFIRMED",
-      "boarding_status": "NOT BOARDED",
-      "created_at": "2026-10-19T06:30:41.782Z",
-      "cancelled_at": null
-    },
-    {
-      "id": "bk_full_4",
-      "booking_reference": "CIT-BK-99103",
-      "student_id": "usr_student_2",
-      "trip_id": "trip_bus_110",
-      "seat_id": "1D",
-      "booking_status": "CONFIRMED",
-      "boarding_status": "NOT BOARDED",
-      "created_at": "2026-10-19T06:30:41.782Z",
-      "cancelled_at": null
-    },
-    {
-      "id": "bk_full_5",
-      "booking_reference": "CIT-BK-99104",
-      "student_id": "usr_student_1",
-      "trip_id": "trip_bus_110",
-      "seat_id": "2A",
-      "booking_status": "CONFIRMED",
-      "boarding_status": "NOT BOARDED",
-      "created_at": "2026-10-19T06:30:41.782Z",
-      "cancelled_at": null
-    },
-    {
-      "id": "bk_full_6",
-      "booking_reference": "CIT-BK-99105",
-      "student_id": "usr_student_2",
-      "trip_id": "trip_bus_110",
-      "seat_id": "2B",
-      "booking_status": "CONFIRMED",
-      "boarding_status": "NOT BOARDED",
-      "created_at": "2026-10-19T06:30:41.782Z",
-      "cancelled_at": null
-    },
-    {
-      "id": "bk_full_7",
-      "booking_reference": "CIT-BK-99106",
-      "student_id": "usr_student_1",
-      "trip_id": "trip_bus_110",
-      "seat_id": "2C",
-      "booking_status": "CONFIRMED",
-      "boarding_status": "NOT BOARDED",
-      "created_at": "2026-10-19T06:30:41.782Z",
-      "cancelled_at": null
-    },
-    {
-      "id": "bk_full_8",
-      "booking_reference": "CIT-BK-99107",
-      "student_id": "usr_student_2",
-      "trip_id": "trip_bus_110",
-      "seat_id": "2D",
-      "booking_status": "CONFIRMED",
-      "boarding_status": "NOT BOARDED",
-      "created_at": "2026-10-19T06:30:41.782Z",
-      "cancelled_at": null
-    },
-    {
-      "id": "bk_full_9",
-      "booking_reference": "CIT-BK-99108",
-      "student_id": "usr_student_1",
-      "trip_id": "trip_bus_110",
-      "seat_id": "3A",
-      "booking_status": "CONFIRMED",
-      "boarding_status": "NOT BOARDED",
-      "created_at": "2026-10-19T06:30:41.782Z",
-      "cancelled_at": null
-    },
-    {
-      "id": "bk_full_10",
-      "booking_reference": "CIT-BK-99109",
-      "student_id": "usr_student_2",
-      "trip_id": "trip_bus_110",
-      "seat_id": "3B",
-      "booking_status": "CONFIRMED",
-      "boarding_status": "NOT BOARDED",
-      "created_at": "2026-10-19T06:30:41.782Z",
-      "cancelled_at": null
-    },
-    {
-      "id": "bk_full_11",
-      "booking_reference": "CIT-BK-99110",
-      "student_id": "usr_student_1",
-      "trip_id": "trip_bus_110",
-      "seat_id": "3C",
-      "booking_status": "CONFIRMED",
-      "boarding_status": "NOT BOARDED",
-      "created_at": "2026-10-19T06:30:41.782Z",
-      "cancelled_at": null
-    },
-    {
-      "id": "bk_full_12",
-      "booking_reference": "CIT-BK-99111",
-      "student_id": "usr_student_2",
-      "trip_id": "trip_bus_110",
-      "seat_id": "3D",
-      "booking_status": "CONFIRMED",
-      "boarding_status": "NOT BOARDED",
-      "created_at": "2026-10-19T06:30:41.782Z",
-      "cancelled_at": null
-    },
-    {
-      "id": "bk_full_13",
-      "booking_reference": "CIT-BK-99112",
-      "student_id": "usr_student_1",
-      "trip_id": "trip_bus_110",
-      "seat_id": "4A",
-      "booking_status": "CONFIRMED",
-      "boarding_status": "NOT BOARDED",
-      "created_at": "2026-10-19T06:30:41.782Z",
-      "cancelled_at": null
-    },
-    {
-      "id": "bk_full_14",
-      "booking_reference": "CIT-BK-99113",
-      "student_id": "usr_student_2",
-      "trip_id": "trip_bus_110",
-      "seat_id": "4B",
-      "booking_status": "CONFIRMED",
-      "boarding_status": "NOT BOARDED",
-      "created_at": "2026-10-19T06:30:41.782Z",
-      "cancelled_at": null
-    },
-    {
-      "id": "bk_full_15",
-      "booking_reference": "CIT-BK-99114",
-      "student_id": "usr_student_1",
-      "trip_id": "trip_bus_110",
-      "seat_id": "4C",
-      "booking_status": "CONFIRMED",
-      "boarding_status": "NOT BOARDED",
-      "created_at": "2026-10-19T06:30:41.782Z",
-      "cancelled_at": null
-    },
-    {
-      "id": "bk_full_16",
-      "booking_reference": "CIT-BK-99115",
-      "student_id": "usr_student_2",
-      "trip_id": "trip_bus_110",
-      "seat_id": "4D",
-      "booking_status": "CONFIRMED",
-      "boarding_status": "NOT BOARDED",
-      "created_at": "2026-10-19T06:30:41.782Z",
-      "cancelled_at": null
-    },
-    {
-      "id": "bk_full_17",
-      "booking_reference": "CIT-BK-99116",
-      "student_id": "usr_student_1",
-      "trip_id": "trip_bus_110",
-      "seat_id": "5A",
-      "booking_status": "CONFIRMED",
-      "boarding_status": "NOT BOARDED",
-      "created_at": "2026-10-19T06:30:41.782Z",
-      "cancelled_at": null
-    },
-    {
-      "id": "bk_full_18",
-      "booking_reference": "CIT-BK-99117",
-      "student_id": "usr_student_2",
-      "trip_id": "trip_bus_110",
-      "seat_id": "5B",
-      "booking_status": "CONFIRMED",
-      "boarding_status": "NOT BOARDED",
-      "created_at": "2026-10-19T06:30:41.782Z",
-      "cancelled_at": null
-    },
-    {
-      "id": "bk_full_19",
-      "booking_reference": "CIT-BK-99118",
-      "student_id": "usr_student_1",
-      "trip_id": "trip_bus_110",
-      "seat_id": "5C",
-      "booking_status": "CONFIRMED",
-      "boarding_status": "NOT BOARDED",
-      "created_at": "2026-10-19T06:30:41.782Z",
-      "cancelled_at": null
-    },
-    {
-      "id": "bk_full_20",
-      "booking_reference": "CIT-BK-99119",
-      "student_id": "usr_student_2",
-      "trip_id": "trip_bus_110",
-      "seat_id": "5D",
-      "booking_status": "CONFIRMED",
-      "boarding_status": "NOT BOARDED",
-      "created_at": "2026-10-19T06:30:41.782Z",
-      "cancelled_at": null
-    },
-    {
-      "id": "bk_full_21",
-      "booking_reference": "CIT-BK-99120",
-      "student_id": "usr_student_1",
-      "trip_id": "trip_bus_110",
-      "seat_id": "6A",
-      "booking_status": "CONFIRMED",
-      "boarding_status": "NOT BOARDED",
-      "created_at": "2026-10-19T06:30:41.782Z",
-      "cancelled_at": null
-    },
-    {
-      "id": "bk_full_22",
-      "booking_reference": "CIT-BK-99121",
-      "student_id": "usr_student_2",
-      "trip_id": "trip_bus_110",
-      "seat_id": "6B",
-      "booking_status": "CONFIRMED",
-      "boarding_status": "NOT BOARDED",
-      "created_at": "2026-10-19T06:30:41.782Z",
-      "cancelled_at": null
-    },
-    {
-      "id": "bk_full_23",
-      "booking_reference": "CIT-BK-99122",
-      "student_id": "usr_student_1",
-      "trip_id": "trip_bus_110",
-      "seat_id": "6C",
-      "booking_status": "CONFIRMED",
-      "boarding_status": "NOT BOARDED",
-      "created_at": "2026-10-19T06:30:41.782Z",
-      "cancelled_at": null
-    },
-    {
-      "id": "bk_full_24",
-      "booking_reference": "CIT-BK-99123",
-      "student_id": "usr_student_2",
-      "trip_id": "trip_bus_110",
-      "seat_id": "6D",
-      "booking_status": "CONFIRMED",
-      "boarding_status": "NOT BOARDED",
-      "created_at": "2026-10-19T06:30:41.782Z",
-      "cancelled_at": null
-    }
-  ],
-  "boarding_events": [
-    {
-      "id": "bde_1",
-      "booking_id": "bk_sample_2",
-      "student_id": "usr_student_2",
-      "trip_id": "trip_bus_1",
-      "scanned_by_driver_id": "usr_driver_1",
-      "boarded_at": "2026-10-19T07:05:41.782Z",
-      "method": "QR"
-    }
-  ],
-  "email_logs": [
-    {
-      "id": "eml_1",
-      "booking_id": "bk_sample_1",
-      "recipient_email": "aarav.sharma@citchennai.net",
-      "recipient_name": "Aarav Sharma",
-      "subject": "CIT Booker — Your Bus Booking Is Confirmed [CIT-BK-84920]",
-      "body_preview": "Dear Aarav Sharma, your seat 2B on Bus 1 (Route 1: Ennore) departing at 05:20 AM is confirmed for ₹0. Present your personal QR pass when boarding at your designated stop.",
-      "status": "SENT",
-      "sent_at": "2026-10-19T06:50:41.782Z",
-      "error_message": null
-    },
-    {
-      "id": "eml_2",
-      "booking_id": "bk_sample_2",
-      "recipient_email": "ananya.rao@citchennai.net",
-      "recipient_name": "Ananya Rao",
-      "subject": "CIT Booker — Your Bus Booking Is Confirmed [CIT-BK-11029]",
-      "body_preview": "Dear Ananya Rao, your seat 3A on Bus 1 (Route 1: Ennore) departing at 05:20 AM is confirmed for ₹0. Present your personal QR pass when boarding.",
-      "status": "SENT",
-      "sent_at": "2026-10-19T06:40:41.782Z",
-      "error_message": null
-    }
-  ],
+  "bookings": [],
+  "boarding_events": [],
+  "email_logs": [],
   "settings": {
     "restrict_email_domain": false,
     "allowed_domain": "@citchennai.net",
     "demo_mode": true
+  },
+  "bus_map": {
+    "id": "cit_bus_map_today",
+    "image_url": "/assets/aistudio/WhatsApp_Image_2026-10-20_at_4.19.25_PM_4a42e03a.jpeg",
+    "title": "CIT Campus Bus Identification & Parking Bay Allocation Map",
+    "effective_date": "2026-10-22",
+    "updated_at": "2026-10-22T11:44:13.907Z",
+    "updated_by_name": "Campus Transport Authenticator",
+    "updated_by_email": "transport@citchennai.net",
+    "notes": "Official campus parking bay layout and bus identification numbers for today. Reminder: Route numbers are used as bus numbers. Check your allocated parking bay before boarding.",
+    "version": 1
   }
 }

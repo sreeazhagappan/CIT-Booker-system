@@ -39,7 +39,28 @@ export const SeatMapModal: React.FC<SeatMapModalProps> = ({ tripId, onClose, onB
 
   useEffect(() => {
     loadDetails();
-  }, [tripId]);
+    // Real-time seat updates: poll every 2 seconds while modal is open
+    const pollInterval = setInterval(async () => {
+      try {
+        const data = await api.getTripDetails(tripId);
+        setTripDetail(data.trip);
+
+        // If currently selected seat was claimed by another student, clear selection and alert
+        if (selectedSeat && data.trip?.seat_map) {
+          const seatObj = data.trip.seat_map.find((s: any) => s.seat_id === selectedSeat);
+          if (seatObj && seatObj.is_booked) {
+            setSelectedSeat(null);
+            setShowConfirm(false);
+            setErrorMessage(`Seat ${selectedSeat} was just booked by another student.`);
+          }
+        }
+      } catch {
+        // ignore background poll errors
+      }
+    }, 2000);
+
+    return () => clearInterval(pollInterval);
+  }, [tripId, selectedSeat]);
 
   const handleSeatClick = (seatId: string, isBooked: boolean) => {
     if (isBooked || tripDetail?.status !== 'OPEN') return;

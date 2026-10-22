@@ -62,6 +62,21 @@ apiRouter.get('/auth/me', (req: Request, res: Response) => {
     qrIdentity = currentDb.student_qr_identities.find(
       q => q.user_id === user.id && q.status === 'ACTIVE'
     );
+    if (!qrIdentity) {
+      const opaqueToken = `CIT-QR-${crypto.randomBytes(6).toString('hex').toUpperCase()}`;
+      qrIdentity = {
+        id: `qr_${Date.now()}`,
+        user_id: user.id,
+        opaque_qr_identifier: opaqueToken,
+        status: 'ACTIVE',
+        created_at: new Date().toISOString(),
+        revoked_at: null,
+        regenerated_at: null
+      };
+      db.transaction(database => {
+        database.student_qr_identities.push(qrIdentity!);
+      });
+    }
   }
 
   res.json({
@@ -170,7 +185,7 @@ apiRouter.post('/auth/verify-email', (req: Request, res: Response) => {
   res.json({ success: true, message: 'Email address verified successfully.' });
 });
 
-// Staff / General Sign In
+// Staff / General / Student Sign In
 apiRouter.post('/auth/login', (req: Request, res: Response) => {
   const { email, role } = req.body;
   if (!email) {
@@ -178,9 +193,56 @@ apiRouter.post('/auth/login', (req: Request, res: Response) => {
   }
 
   const currentDb = db.read();
-  const user = currentDb.users.find(u => u.email.toLowerCase() === email.toLowerCase().trim());
+  const normalizedEmail = email.toLowerCase().trim();
+  let user = currentDb.users.find(u => u.email.toLowerCase().trim() === normalizedEmail);
 
   if (!user) {
+    // Determine if this is a student login (explicit role or student email format)
+    const isStudentAttempt = role === 'student' || (!role && !normalizedEmail.includes('driver') && !normalizedEmail.includes('admin') && !normalizedEmail.includes('transport'));
+
+    if (isStudentAttempt) {
+      // Auto-provision student profile so user is never locked out on direct access or login
+      const localPart = normalizedEmail.split('@')[0];
+      const derivedName = localPart
+        .split(/[._-]/)
+        .filter(Boolean)
+        .map((p: string) => p.charAt(0).toUpperCase() + p.slice(1).toLowerCase())
+        .join(' ') || 'CIT Student';
+
+      const newUser: User = {
+        id: `usr_student_${Date.now()}`,
+        name: derivedName,
+        email: normalizedEmail,
+        role: 'student',
+        is_verified: true,
+        student_id_number: `CIT-${Math.floor(1000 + Math.random() * 9000)}`,
+        phone: '+91 98940 12345',
+        created_at: new Date().toISOString()
+      };
+
+      const opaqueToken = `CIT-QR-${crypto.randomBytes(6).toString('hex').toUpperCase()}`;
+      const newQR: StudentQRIdentity = {
+        id: `qr_${Date.now()}`,
+        user_id: newUser.id,
+        opaque_qr_identifier: opaqueToken,
+        status: 'ACTIVE',
+        created_at: new Date().toISOString(),
+        revoked_at: null,
+        regenerated_at: null
+      };
+
+      db.transaction(database => {
+        database.users.push(newUser);
+        database.student_qr_identities.push(newQR);
+      });
+
+      return res.json({
+        user: newUser,
+        qr_identity: newQR,
+        token: newUser.id
+      });
+    }
+
     return res.status(404).json({ error: 'No account found with this email address.' });
   }
 
@@ -193,6 +255,23 @@ apiRouter.post('/auth/login', (req: Request, res: Response) => {
     qrIdentity = currentDb.student_qr_identities.find(
       q => q.user_id === user.id && q.status === 'ACTIVE'
     );
+
+    // If existing student lacks an active QR identity, provision one seamlessly
+    if (!qrIdentity) {
+      const opaqueToken = `CIT-QR-${crypto.randomBytes(6).toString('hex').toUpperCase()}`;
+      qrIdentity = {
+        id: `qr_${Date.now()}`,
+        user_id: user.id,
+        opaque_qr_identifier: opaqueToken,
+        status: 'ACTIVE',
+        created_at: new Date().toISOString(),
+        revoked_at: null,
+        regenerated_at: null
+      };
+      db.transaction(database => {
+        database.student_qr_identities.push(qrIdentity!);
+      });
+    }
   }
 
   res.json({
@@ -441,6 +520,72 @@ apiRouter.patch('/trips/:id/booking-window', (req: Request, res: Response) => {
   } catch (err: any) {
     res.status(400).json({ error: err.message || 'Failed to update booking window.' });
   }
+});
+
+// Admin: Open all trips for booking in one click
+apiRouter.post('/admin/trips/open-all', (req: Request, res: Response) => {
+  const user = getAuthUser(req);
+  if (!user || user.role !== 'admin') {
+    return res.status(403).json({ error: 'Administrator access required.' });
+  }
+
+  const now = new Date();
+  const updatedTrips = db.transaction(database => {
+    database.trips.forEach(trip => {
+      trip.status = 'OPEN';
+      trip.booking_window_opens_at = new Date(now.getTime() - 60 * 60 * 1000).toISOString();
+      trip.booking_window_closes_at = new Date(now.getTime() + 4 * 60 * 60 * 1000).toISOString();
+    });
+    return database.trips;
+  });
+
+  res.json({
+    success: true,
+    count: updatedTrips.length,
+    message: `All ${updatedTrips.length} campus buses are now OPEN for student bookings.`
+  });
+});
+
+// Admin: Close all trips for booking in one click
+apiRouter.post('/admin/trips/close-all', (req: Request, res: Response) => {
+  const user = getAuthUser(req);
+  if (!user || user.role !== 'admin') {
+    return res.status(403).json({ error: 'Administrator access required.' });
+  }
+
+  const now = new Date();
+  const updatedTrips = db.transaction(database => {
+    database.trips.forEach(trip => {
+      trip.status = 'CLOSED';
+      trip.booking_window_closes_at = now.toISOString();
+    });
+    return database.trips;
+  });
+
+  res.json({
+    success: true,
+    count: updatedTrips.length,
+    message: `All ${updatedTrips.length} campus bus bookings have been CLOSED by Administrator.`
+  });
+});
+
+// Admin: Remove all previous bookings made in past (reset to fresh state)
+apiRouter.post('/admin/bookings/clear-all', (req: Request, res: Response) => {
+  const user = getAuthUser(req);
+  if (!user || user.role !== 'admin') {
+    return res.status(403).json({ error: 'Administrator access required.' });
+  }
+
+  db.transaction(database => {
+    database.bookings = [];
+    database.boarding_events = [];
+    database.email_logs = [];
+  });
+
+  res.json({
+    success: true,
+    message: 'All previous bookings and boarding events have been cleared. All bus seats are now available.'
+  });
 });
 
 // Admin: Assign driver to trip (enforcing 1 driver associated with only 1 bus/trip per day)

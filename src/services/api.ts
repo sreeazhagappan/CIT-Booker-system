@@ -336,37 +336,14 @@ class ApiService {
     return json;
   }
 
-  // Admin Booking Control: Open / Close Bus Bookings
+  // Admin Booking Control: Open / Close Bus Bookings (Alias)
   async setBookingWindow(tripId: string, action: 'OPEN' | 'CLOSE' | 'TOGGLE'): Promise<{ success: boolean; trip: Trip; message: string }> {
-    const res = await fetch(`${API_BASE}/trips/${tripId}/booking-window`, {
-      method: 'PATCH',
-      headers: this.getHeaders(),
-      body: JSON.stringify({ action })
-    });
-    const json = await res.json();
-    if (!res.ok) throw new Error(json.error || 'Failed to update bus booking window');
-    return json;
+    return this.setTripBookingWindow(tripId, action as any);
   }
 
-  // Admin Driver Assignment: Assign Driver (enforcing 1 driver 1 bus/trip per day)
+  // Admin Driver Assignment (Alias)
   async assignDriver(tripId: string, driver_id: string): Promise<{ success: boolean; trip: Trip; driver: User; message: string }> {
-    const res = await fetch(`${API_BASE}/trips/${tripId}/assign-driver`, {
-      method: 'PATCH',
-      headers: this.getHeaders(),
-      body: JSON.stringify({ driver_id })
-    });
-    const json = await res.json();
-    if (!res.ok) throw new Error(json.error || 'Failed to assign driver to trip');
-    return json;
-  }
-
-  // Admin Driver Availability
-  async getDriverAvailability(date?: string): Promise<{ drivers: DriverAvailability[] }> {
-    const url = date ? `${API_BASE}/admin/drivers/availability?date=${encodeURIComponent(date)}` : `${API_BASE}/admin/drivers/availability`;
-    const res = await fetch(url, { headers: this.getHeaders() });
-    const json = await res.json();
-    if (!res.ok) throw new Error(json.error || 'Failed to load driver availability');
-    return json;
+    return this.assignTripDriver(tripId, driver_id);
   }
 }
 
